@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pete's New York Barber | Classic NYC Grooming Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0A1628;
+            --blue: #1E3A5F;
+            --orange: #E85A24;
+            --gold: #C9A962;
+            --white: #FFFFFF;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --dark: #050A12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--white);
+            color: var(--navy);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--navy);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--orange);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--navy);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 30px;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+        }
+
+        .top-bar-item i {
+            color: var(--orange);
+        }
+
+        .top-bar-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .top-bar-item a:hover {
+            color: var(--orange);
+        }
+
+        .top-bar-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .top-bar-social a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .top-bar-social a:hover {
+            color: var(--orange);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--orange), #FF7A45);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-img::before {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 2px solid var(--navy);
+            border-radius: 50%;
+        }
+
+        .logo-img i {
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .logo-text h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            color: var(--orange);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: var(--orange);
+            color: var(--white);
+            padding: 14px 30px;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn:hover {
+            background: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(30, 58, 95, 0.85)),
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            right: -200px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            border: 100px solid rgba(232, 90, 36, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .hero-label .line {
+            width: 50px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .hero-label span {
+            color: var(--orange);
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 72px;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--orange);
+            display: block;
+        }
+
+        .hero-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 40px;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-primary:hover {
+            background: #FF6B35;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 90, 36, 0.4);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: var(--white);
+            padding: 18px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--navy);
+            border-color: var(--white);
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 50px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(232, 90, 36, 0.2);
+            border: 1px solid var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-feature-icon i {
+            color: var(--orange);
+            font-size: 20px;
+        }
+
+        .hero-feature-text h4 {
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .hero-feature-text span {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+        }
+
+        /* Floating Info */
+        .floating-info {
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            background: var(--white);
+            padding: 40px;
+            max-width: 350px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1s ease 0.5s both;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-info h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            color: var(--navy);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .floating-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .floating-info-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 20px;
+        }
+
+        .floating-info-item span:first-child {
+            color: var(--gray);
+        }
+
+        .floating-info-item span:last-child {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .floating-info .btn-small {
+            background: var(--navy);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 12px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .floating-info .btn-small:hover {
+            background: var(--orange);
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 5%;
+            background: var(--light);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            height: 600px;
+        }
+
+        .about-img-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 80%;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-img-secondary {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 55%;
+            height: 50%;
+            object-fit: cover;
+            border: 8px solid var(--white);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-experience {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--orange);
+            color: var(--white);
+            padding: 30px 40px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .about-experience h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            line-height: 1;
+        }
+
+        .about-experience p {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .about-content {
+            padding-left: 20px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .section-label .line {
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .section-label span {
+            color: var(--orange);
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .about-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--navy);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .about-content p {
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .about-signature {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid #ddd;
+        }
+
+        .about-signature img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--orange);
+        }
+
+        .about-signature-text h4 {
+            font-family: 'Italiana', serif;
+            font-size: 36px;
+            color: var(--navy);
+            font-style: italic;
+        }
+
+        .about-signature-text span {
+            color: var(--orange);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .about-feature i {
+            width: 45px;
+            height: 45px;
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .about-feature span {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 5%;
+            background: var(--navy);
+            position: relative;
+        }
+
+        .services-bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Oswald', sans-serif;
+            font-size: 200px;
+            color: rgba(255, 255, 255, 0.02);
+            text-transform: uppercase;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-header .section-label {
+            justify-content: center;
+        }
+
+        .services-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--orange), #FF7A45);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--orange);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(232, 90, 36, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+
+        .service-icon i {
+            font-size: 32px;
+            color: var(--orange);
+            transition: color 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-card:hover .service-icon i {
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-card:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .service-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .service-card:hover .service-price {
+            color: var(--white);
+        }
+
+        .service-price span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .service-card:hover .service-price span {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Price List Section */
+        .price-list {
+            padding: 120px 5%;
+            background: var(--white);
+        }
+
+        .price-list-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .price-list-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .price-list-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .price-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .price-column h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--orange);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .price-row:last-child {
+            border-bottom: none;
+        }
+
+        .price-name h4 {
+            font-size: 16px;
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .price-name span {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .price-amount {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 120px 5%;
+            background: var(--light);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .gallery-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(232, 90, 36, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-overlay i {
+            font-size: 30px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .gallery-overlay span {
+            color: var(--white);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 120px 5%;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '"';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 500px;
+            color: rgba(255, 255, 255, 0.02);
+            font-family: Georgia, serif;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .testimonials-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-slide {
+            text-align: center;
+            padding: 0 50px;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-slide blockquote {
+            font-family: 'Italiana', serif;
+            font-size: 28px;
+            color: var(--white);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .testimonial-author img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--orange);
+        }
+
+        .testimonial-author-info h4 {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .testimonial-author-info span {
+            color: var(--orange);
+            font-size: 14px;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 120px 5%;
+            background: var(--white);
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .team-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            position: relative;
+            overflow: hidden;
+            group: team;
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, var(--navy), transparent);
+            padding: 100px 25px 30px;
+            transition: all 0.4s ease;
+        }
+
+        .team-info h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 22px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-info span {
+            color: var(--orange);
+            font-size: 14px;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover .team-social {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-social a {
+            width: 35px;
+            height: 35px;
+            background: var(--orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 5%;
+            background: var(--light);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info > p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .contact-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-bottom: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .contact-box:last-of-type {
+            border-bottom: none;
+        }
+
+        .contact-box-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--orange);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .contact-box-text h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .contact-box-text p,
+        .contact-box-text a {
+            color: var(--gray);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .contact-box-text a:hover {
+            color: var(--orange);
+        }
+
+        .contact-hours {
+            background: var(--navy);
+            padding: 50px;
+        }
+
+        .contact-hours h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-hours h3 i {
+            color: var(--orange);
+        }
+
+        .hours-list {
+            margin-bottom: 30px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hours-row span:first-child {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hours-row span:last-child {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .contact-hours .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Map */
+        .map {
+            height: 450px;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--orange), #FF7A45);
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 52px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .cta .btn-dark {
+            background: var(--navy);
+            color: var(--white);
+            padding: 18px 50px;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cta .btn-dark:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 80px 5% 30px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-about .logo {
+            margin-bottom: 25px;
+        }
+
+        .footer-about .logo-text h1 {
+            color: var(--white);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .footer-col h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col ul a::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--orange);
+            padding-left: 10px;
+        }
+
+        .footer-col ul a:hover::before {
+            opacity: 1;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            font-size: 14px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .newsletter-form button {
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #FF7A45;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
+
+        .footer-bottom span {
+            color: var(--orange);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--orange);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: var(--navy);
+            padding: 80px 40px;
+            transition: right 0.4s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 30px;
+            color: var(--orange);
+            cursor: pointer;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 25px;
+        }
+
+        .mobile-menu ul a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu ul a:hover {
+            color: var(--orange);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 998;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .floating-info {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .top-bar {
+                display: none;
+            }
+
+            .nav-links, .nav-btn {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .about-images {
+                height: 500px;
+            }
+
+            .price-table {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(3, 180px);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-col ul a {
+                justify-content: center;
+            }
+
+            .footer-col ul a::before {
+                display: none;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-signature {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <div class="top-bar-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>New York, NY</span>
+            </div>
+            <div class="top-bar-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+12125551234">(212) 555-1234</a>
+            </div>
+            <div class="top-bar-item">
+                <i class="fas fa-clock"></i>
+                <span>Mon-Sat: 9AM - 8PM</span>
+            </div>
+        </div>
+        <div class="top-bar-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-yelp"></i></a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <div class="logo-img">
+                <i class="fas fa-cut"></i>
+            </div>
+            <div class="logo-text">
+                <h1>Pete's</h1>
+                <span>New York Barber</span>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#team">Barbers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="tel:+12125551234" class="nav-btn">
+            <i class="fas fa-phone"></i>
+            Book Now
+        </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="overlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu">
+        <span class="mobile-menu-close" onclick="toggleMenu()">&times;</span>
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+            <li><a href="#team" onclick="toggleMenu()">Barbers</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-label">
+                    <div class="line"></div>
+                    <span>Welcome to Pete's</span>
+                </div>
+                <h1>New York's <span class="highlight">Premier Barber</span> Experience</h1>
+                <p class="hero-desc">Step into Pete's New York Barber and experience the finest in men's grooming. Our expert barbers combine classic techniques with modern styles to give you the perfect look.</p>
+                <div class="hero-buttons">
+                    <a href="tel:+12125551234" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        Book Appointment
+                    </a>
+                    <a href="#services" class="btn-outline-light">View Services</a>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="hero-feature-text">
+                            <h4>Award Winning</h4>
+                            <span>Top Rated in NYC</span>
+                        </div>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="hero-feature-text">
+                            <h4>Expert Team</h4>
+                            <span>Skilled Professionals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="floating-info">
+            <h3>Quick Info</h3>
+            <div class="floating-info-item">
+                <span>Haircut</span>
+                <span>From $35</span>
+            </div>
+            <div class="floating-info-item">
+                <span>Beard Trim</span>
+                <span>From $20</span>
+            </div>
+            <div class="floating-info-item">
+                <span>Hot Shave</span>
+                <span>From $40</span>
+            </div>
+            <a href="#services" class="btn-small">View All Services</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Barber Shop Interior" class="about-img-main">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Barber at Work" class="about-img-secondary">
+                <div class="about-experience">
+                    <h3>25+</h3>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="section-label">
+                    <div class="line"></div>
+                    <span>About Us</span>
+                </div>
+                <h2>The New York Barber Experience</h2>
+                <p>Pete's New York Barber has been a cornerstone of men's grooming in the city for over two decades. What started as a small neighborhood shop has grown into one of NYC's most trusted barbershops.</p>
+                <p>Our philosophy is simple: every client deserves a premium experience. From the moment you walk through our doors, you'll feel the difference. Our skilled barbers take the time to understand your style and deliver a cut that exceeds expectations.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-check"></i>
+                        <span>Master Barbers</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check"></i>
+                        <span>Premium Products</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check"></i>
+                        <span>Classic Atmosphere</span>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-check"></i>
+                        <span>Walk-ins Welcome</span>
+                    </div>
+                </div>
+                <div class="about-signature">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Pete">
+                    <div class="about-signature-text">
+                        <h4>Pete Romano</h4>
+                        <span>Founder & Master Barber</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-bg-text">Services</div>
+        <div class="services-header">
+            <div class="section-label">
+                <div class="line"></div>
+                <span>What We Offer</span>
+                <div class="line"></div>
+            </div>
+            <h2>Our Premium Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <h3>Classic Haircut</h3>
+                <p>Precision cut with consultation, shampoo, and styling.</p>
+                <div class="service-price">$35 <span>& up</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Fade Haircut</h3>
+                <p>Skin fade, mid fade, or taper with detailed finishing.</p>
+                <div class="service-price">$40 <span>& up</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-face-grin-beam"></i>
+                </div>
+                <h3>Beard Trim</h3>
+                <p>Shape, line up, and style your beard to perfection.</p>
+                <div class="service-price">$20 <span>& up</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Hot Towel Shave</h3>
+                <p>Traditional straight razor shave with hot towel treatment.</p>
+                <div class="service-price">$40 <span>& up</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>The Pete's Special</h3>
+                <p>Haircut, beard trim, hot towel, and facial treatment.</p>
+                <div class="service-price">$75 <span>& up</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3>Kids Haircut</h3>
+                <p>For our younger clients (12 and under).</p>
+                <div class="service-price">$25 <span>& up</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Hair Design</h3>
+                <p>Custom designs and artistic hair patterns.</p>
+                <div class="service-price">$15 <span>& up</span></div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-head-side"></i>
+                </div>
+                <h3>Scalp Treatment</h3>
+                <p>Relaxing scalp massage and treatment.</p>
+                <div class="service-price">$30 <span>& up</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price List Section -->
+    <section class="price-list">
+        <div class="price-list-container">
+            <div class="price-list-header">
+                <div class="section-label" style="justify-content: center;">
+                    <div class="line"></div>
+                    <span>Pricing</span>
+                    <div class="line"></div>
+                </div>
+                <h2>Complete Price List</h2>
+            </div>
+            <div class="price-table">
+                <div class="price-column">
+                    <h3>Haircuts</h3>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Classic Haircut</h4>
+                            <span>Includes shampoo & style</span>
+                        </div>
+                        <div class="price-amount">$35</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Fade / Taper</h4>
+                            <span>Precision fade work</span>
+                        </div>
+                        <div class="price-amount">$40</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Buzz Cut</h4>
+                            <span>One length all over</span>
+                        </div>
+                        <div class="price-amount">$25</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Kids Cut (12 & under)</h4>
+                            <span>Any style</span>
+                        </div>
+                        <div class="price-amount">$25</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Senior Cut (65+)</h4>
+                            <span>Classic styling</span>
+                        </div>
+                        <div class="price-amount">$30</div>
+                    </div>
+                </div>
+                <div class="price-column">
+                    <h3>Beard & Shave</h3>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Beard Trim</h4>
+                            <span>Shape & style</span>
+                        </div>
+                        <div class="price-amount">$20</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Beard Sculpting</h4>
+                            <span>Detailed beard design</span>
+                        </div>
+                        <div class="price-amount">$30</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Hot Towel Shave</h4>
+                            <span>Straight razor, hot towel</span>
+                        </div>
+                        <div class="price-amount">$40</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>Haircut + Beard</h4>
+                            <span>Complete package</span>
+                        </div>
+                        <div class="price-amount">$50</div>
+                    </div>
+                    <div class="price-row">
+                        <div class="price-name">
+                            <h4>The Pete's Special</h4>
+                            <span>Ultimate grooming</span>
+                        </div>
+                        <div class="price-amount">$75</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-header">
+            <div class="section-label" style="justify-content: center;">
+                <div class="line"></div>
+                <span>Our Work</span>
+                <div class="line"></div>
+            </div>
+            <h2>Style Gallery</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Haircut Style">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fade Cut">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1599351431613-18ef1fdd27e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Beard Trim">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Classic Style">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern Cut">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>View</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shop Interior">
+                <div class="gallery-overlay">
+                    <i class="fas fa-expand"></i>
+                    <span>View</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-header">
+            <div class="section-label" style="justify-content: center;">
+                <div class="line" style="background: var(--gold);"></div>
+                <span style="color: var(--gold);">Testimonials</span>
+                <div class="line" style="background: var(--gold);"></div>
+            </div>
+            <h2>What Our Clients Say</h2>
+        </div>
+        <div class="testimonials-slider">
+            <div class="testimonial-slide">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <blockquote>"Pete's is the real deal. I've been coming here for 10 years and wouldn't trust anyone else with my hair. The attention to detail is unmatched, and the atmosphere is always welcoming. Best barber shop in NYC, hands down."</blockquote>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Client">
+                    <div class="testimonial-author-info">
+                        <h4>Michael Torres</h4>
+                        <span>Loyal Customer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="team-header">
+            <div class="section-label" style="justify-content: center;">
+                <div class="line"></div>
+                <span>Our Team</span>
+                <div class="line"></div>
+            </div>
+            <h2>Meet The Barbers</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pete Romano">
+                <div class="team-info">
+                    <h3>Pete Romano</h3>
+                    <span>Founder & Master Barber</span>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Marco Silva">
+                <div class="team-info">
+                    <h3>Marco Silva</h3>
+                    <span>Senior Barber</span>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="James Chen">
+                <div class="team-info">
+                    <h3>James Chen</h3>
+                    <span>Master Barber</span>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="David Williams">
+                <div class="team-info">
+                    <h3>David Williams</h3>
+                    <span>Barber</span>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="section-label">
+                    <div class="line"></div>
+                    <span>Get In Touch</span>
+                </div>
+                <h2>Visit Pete's Today</h2>
+                <p>Stop by for the best haircut in New York City. Walk-ins are always welcome, but feel free to call ahead to reserve your spot with your favorite barber.</p>
+                <div class="contact-box">
+                    <div class="contact-box-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-box-text">
+                        <h4>Location</h4>
+                        <p>1608 S Belcher Rd<br>Largo, FL 33771</p>
+                    </div>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-box-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-box-text">
+                        <h4>Phone</h4>
+                        <a href="tel:+17275355270">(727) 535-5270</a>
+                    </div>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-box-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-box-text">
+                        <h4>Email</h4>
+                        <a href="mailto:info@petesnybarber.com">info@petesnybarber.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-hours">
+                <h3><i class="far fa-clock"></i> Business Hours</h3>
+                <div class="hours-list">
+                    <div class="hours-row">
+                        <span>Monday</span>
+                        <span>8:00 AM - 5:45 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Tuesday</span>
+                        <span>8:00 AM - 5:45 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Wednesday</span>
+                        <span>8:00 AM - 5:45 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Thursday</span>
+                        <span>8:00 AM - 5:45 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Friday</span>
+                        <span>8:00 AM - 5:45 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Saturday</span>
+                        <span>8:00 AM - 3:45 PM</span>
+                    </div>
+                    <div class="hours-row">
+                        <span>Sunday</span>
+                        <span>Closed</span>
+                    </div>
+                </div>
+                <a href="tel:+12125551234" class="btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Call to Book
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map -->
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304605!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready for a Fresh Cut?</h2>
+        <p>Walk-ins welcome or call ahead to reserve your chair</p>
+        <a href="tel:+12125551234" class="btn-dark">
+            <i class="fas fa-calendar-alt"></i>
+            Book Your Appointment
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <div class="logo-img">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Pete's</h1>
+                        <span>New York Barber</span>
+                    </div>
+                </a>
+                <p>New York's premier destination for classic cuts and modern styles. Experience the art of grooming with our expert barbers in the heart of the city.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-yelp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#team">Our Barbers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Classic Haircut</a></li>
+                    <li><a href="#services">Fade Haircut</a></li>
+                    <li><a href="#services">Beard Trim</a></li>
+                    <li><a href="#services">Hot Towel Shave</a></li>
+                    <li><a href="#services">Pete's Special</a></li>
+                    <li><a href="#services">Kids Haircut</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get updates on special offers and grooming tips.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pete's New York Barber. All Rights Reserved. | Crafted with <span>♥</span> in NYC</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .team-card, .gallery-item, .price-row').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
